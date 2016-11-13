@@ -23,8 +23,8 @@ public class Terrain {
         terrain = new Place[height][width];
         this.width = width;
         this.height = height;
-        sourcesOfRadiation = new LinkedList();
-        path = new LinkedList();
+        sourcesOfRadiation = new LinkedList<Point>();
+        path = new LinkedList<Point>();
     }
 
     public Place[][] getTerrain() {
@@ -63,10 +63,11 @@ public class Terrain {
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){
                 for (Point p: sourcesOfRadiation ) {
-                    if(p.y() != i && p.x() != j)
+                    if(p.y() != i || p.x() != j)
                         terrain[i][j].setRadiation(terrain[i][j].getRadiation() + a / length(i,j,p) );
                 }
             }
         }
+        System.out.println("Radiation calculated");
     }
 }
