@@ -16,7 +16,7 @@ public class Plot extends JPanel{
         JFrame frame = new JFrame("Radiation map");
         frame.add(this);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(700, 700);
+        frame.setSize(800, 800);
         frame.setVisible(true);
 
         try {
@@ -38,19 +38,23 @@ public class Plot extends JPanel{
                 double r = places[i][j].getRadiation();
                 float rad = (float) r;
                 g.setColor(Color.getHSBColor(rad / 3500000, 1, 1));
-
                 if (places[i][j].isPath()) {
-                    g.setColor(Color.GRAY);
-                } else if (places[i][j].isStart()) {
-                    g.setColor(Color.BLUE);
-                } else if (places[i][j].isFinish()) {
-                    g.setColor(Color.GREEN);
-                } else if (places[i][j].getType() == 1) {
-                    g.setColor(Color.BLACK);
-                } else if (places[i][j].getType() == 2) {
-                    g.setColor(Color.ORANGE);
+                    g.setColor(Color.CYAN);
+                    g.drawLine(i, j, i + 1, j);
+                } else {
+                    if (places[i][j].isStart()) {
+                        g.setColor(Color.BLUE);
+                    } else if (places[i][j].isFinish()) {
+                        g.setColor(Color.GREEN);
+                    } else if (places[i][j].getType() == 1) {
+                        g.setColor(Color.BLACK);
+                    } else if (places[i][j].getType() == 2) {
+                        g.setColor(Color.ORANGE);
+                    }
+                        g.drawLine(i, j, i, j);
                 }
-                g.drawLine(i, j, i, j);
+
+
             }
         }
     }
