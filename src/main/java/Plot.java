@@ -23,7 +23,7 @@ public class Plot extends JPanel{
             BufferedImage image = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
             Graphics2D graphics2D = image.createGraphics();
             frame.paint(graphics2D);
-            ImageIO.write(image,"jpeg", new File("radiation.jpeg"));
+            ImageIO.write(image, "png", new File("radiation.png"));
         } catch (Exception exception) {
             //code
         }
@@ -40,7 +40,7 @@ public class Plot extends JPanel{
                 g.setColor(Color.getHSBColor(rad / 3500000, 1, 1));
 
                 if (places[i][j].isPath()) {
-                    g.setColor(Color.WHITE);
+                    g.setColor(Color.GRAY);
                 } else if (places[i][j].isStart()) {
                     g.setColor(Color.BLUE);
                 } else if (places[i][j].isFinish()) {

@@ -12,7 +12,7 @@ public class Main {
         cityMap.calculateRadiation();
         System.out.println("radiation at start " + cityMap.getTerrain()[cityMap.getStart().y()][cityMap.getStart().x()].getRadiation());
         OptimalPath escape = new OptimalPath(cityMap);
-        escape.calculateOptimalPath(1400.0);
+        escape.calculateOptimalPath(1300.0);
         System.out.println(escape.showOptimalPath());
 
         Plot plot = new Plot(cityMap);
