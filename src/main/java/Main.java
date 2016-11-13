@@ -9,6 +9,7 @@ public class Main {
         BufferedImage map = ImageConvert.loadImage(path);
         Terrain cityMap = ImageConvert.convertTo2D(map);
         cityMap.calculateRadiation();
+        //System.out.println("radiation at start " + cityMap.getTerrain()[cityMap.getStart().y()][cityMap.getStart().x()].getRadiation());
         OptimalPath escape = new OptimalPath(cityMap);
         escape.calculateOptimalPath(1400.0);
         System.out.println(escape.showOptimalPath());

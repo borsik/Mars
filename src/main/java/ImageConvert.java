@@ -18,6 +18,7 @@ public class ImageConvert {
     }
 
     public static Terrain convertTo2D(BufferedImage bufferedImage) {
+
         int width = bufferedImage.getWidth();
         int height = bufferedImage.getHeight();
         Terrain cityMap = new Terrain(width,height);
@@ -26,27 +27,32 @@ public class ImageConvert {
                 switch (bufferedImage.getRGB(i, j)){
                     case -16777216:
                         cityMap.getTerrain()[i][j] = new Place(1,0.0);
+
                         break;
 
                     case -32985:
                         cityMap.getTerrain()[i][j] = new Place(2,0.0);
-                        cityMap.getSourcesOfRadiation().addLast(new Point(i,j));
+                        cityMap.getSourcesOfRadiation().addLast(new Point(j,i));
+
                         break;
 
                     case -1:
                         cityMap.getTerrain()[i][j] = new Place(0,0.0);
+
                         break;
 
                     case -1237980:
                         cityMap.getTerrain()[i][j] = new Place(0,0.0);
                         cityMap.getTerrain()[i][j].setStart(true);
-                        cityMap.setStart(new Point(i,j));
+                        cityMap.setStart(new Point(j,i));
+
                         break;
 
                     case -14503604:
                         cityMap.getTerrain()[i][j] = new Place(0,0.0);
                         cityMap.getTerrain()[i][j].setFinish(true);
-                        cityMap.setFinish(new Point(i,j));
+                        cityMap.setFinish(new Point(j,i));
+
                         break;
                     default:
                 }

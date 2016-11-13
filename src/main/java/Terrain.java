@@ -55,8 +55,8 @@ public class Terrain {
         this.finish = finish;
     }
 
-    public double length (int i, int j, Point p){
-        return Math.sqrt( (i - p.y())*(i - p.y()) + (j - p.x())*(j - p.x()) );
+    public double squareLength (int i, int j, Point p){
+        return  (i - p.y())*(i - p.y()) + (j - p.x())*(j - p.x());
     }
 
     public void calculateRadiation(){
@@ -64,7 +64,7 @@ public class Terrain {
             for(int j = 0; j < width; j++){
                 for (Point p: sourcesOfRadiation ) {
                     if(p.y() != i || p.x() != j)
-                        terrain[i][j].setRadiation(terrain[i][j].getRadiation() + a / length(i,j,p) );
+                        terrain[i][j].setRadiation(terrain[i][j].getRadiation() + a / squareLength(i,j,p) );
                 }
             }
         }
