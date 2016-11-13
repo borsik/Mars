@@ -1,7 +1,8 @@
 import java.awt.image.BufferedImage;
 
+
 /**
- * Created by laptop on 12.11.2016.
+ * Created by olzhas on 12.11.2016.
  */
 public class Main {
     public static void main(String [] args) {
@@ -9,11 +10,11 @@ public class Main {
         BufferedImage map = ImageConvert.loadImage(path);
         Terrain cityMap = ImageConvert.convertTo2D(map);
         cityMap.calculateRadiation();
-        //System.out.println("radiation at start " + cityMap.getTerrain()[cityMap.getStart().y()][cityMap.getStart().x()].getRadiation());
+        System.out.println("radiation at start " + cityMap.getTerrain()[cityMap.getStart().y()][cityMap.getStart().x()].getRadiation());
         OptimalPath escape = new OptimalPath(cityMap);
         escape.calculateOptimalPath(1400.0);
         System.out.println(escape.showOptimalPath());
 
-
+        Plot plot = new Plot(cityMap);
     }
 }
