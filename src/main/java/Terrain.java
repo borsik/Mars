@@ -60,14 +60,21 @@ public class Terrain {
     }
 
     public void calculateRadiation(){
+        double min=Double.POSITIVE_INFINITY, max=0.0;
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){
                 for (Point p: sourcesOfRadiation ) {
                     if(p.y() != i || p.x() != j)
                         terrain[i][j].setRadiation(terrain[i][j].getRadiation() + a / squareLength(i,j,p) );
                 }
+                if(terrain[i][j].getType() == 0) {
+                    if (min > terrain[i][j].getRadiation())
+                        min = terrain[i][j].getRadiation();
+                    if (max < terrain[i][j].getRadiation())
+                        max = terrain[i][j].getRadiation();
+                }
             }
         }
-        System.out.println("Radiation calculated");
+        System.out.println("Radiation calculated" + min + " " + max);
     }
 }

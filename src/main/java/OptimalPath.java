@@ -17,7 +17,7 @@ public class OptimalPath {
     private Double optimalPath;
 
     private void optimizePoint(Point current, PriorityQueue<Point> queue, Double[][] toFillRad, Double[][] toFillPath,
-                               Point[][] previousPoint){
+                               Point[][] previousPoint)  {
         int x = current.x();
         int y = current.y();
         for(int i = y-1; i <= y+1; i++){
@@ -40,7 +40,7 @@ public class OptimalPath {
         }
     }
 
-    private void calculatePathFromStart(){
+    private void calculatePathFromStart()  {
         for(int i = 0; i < baseTerrain.getHeight(); i++){
             for(int j = 0; j < baseTerrain.getWidth();j++){
                 radiationCaughtTo[i][j] = Double.POSITIVE_INFINITY;
@@ -60,7 +60,7 @@ public class OptimalPath {
         }
     }
 
-    private void calculatePathToFinish(){
+    private void calculatePathToFinish()  {
         for(int i = 0; i < baseTerrain.getHeight(); i++){
             for(int j = 0; j < baseTerrain.getWidth();j++){
                 radiationCaughtFrom[i][j] = Double.POSITIVE_INFINITY;
@@ -82,14 +82,14 @@ public class OptimalPath {
 
     public void calculateOptimalPath(Double restriction){
         optimal = baseTerrain.getStart();
-        optimalRadiation = radiationCaughtTo[optimal.y()][optimal.x()] + radiationCaughtFrom[optimal.y()][optimal.x()]
-                - baseTerrain.getTerrain()[optimal.y()][optimal.x()].getRadiation();
+        optimalRadiation = Double.POSITIVE_INFINITY;
         optimalPath = restriction + 1;
 
         for(int i = 0 ; i < baseTerrain.getHeight(); i++){
             for(int j = 0; j < baseTerrain.getWidth(); j++){
+        //for(int i = 300 ; i < 350; i++){
+        //    for(int j = 300; j < 350; j++){
                 if(baseTerrain.getTerrain()[i][j].getType() == 0){
-                    //System.out.println(optimalRadiation + " " + optimalPath);
                     if(optimalRadiation > radiationCaughtTo[i][j] + radiationCaughtFrom[i][j]
                             - baseTerrain.getTerrain()[i][j].getRadiation() &&
                             restriction > lengthOfPathTo[i][j] + lengthOfPathFrom[i][j]){
@@ -138,7 +138,7 @@ public class OptimalPath {
         }
     }
 
-    public OptimalPath(Terrain t){
+    public OptimalPath(Terrain t)  {
         baseTerrain = t;
         radiationCaughtTo = new Double[t.getHeight()][t.getWidth()];
         radiationCaughtFrom = new Double[t.getHeight()][t.getWidth()];
@@ -148,8 +148,10 @@ public class OptimalPath {
         lengthOfPathFrom = new Double[t.getHeight()][t.getWidth()];
         queueFrom = new PriorityQueue<Point>();
         queueTo = new PriorityQueue<Point>();
+        System.out.println("Terrain is created");
         calculatePathFromStart();
         calculatePathToFinish();
+        System.out.println("All paths are calculated");
     }
 
 }
