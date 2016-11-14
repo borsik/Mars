@@ -87,8 +87,6 @@ public class OptimalPath {
 
         for(int i = 0 ; i < baseTerrain.getHeight(); i++){
             for(int j = 0; j < baseTerrain.getWidth(); j++){
-        //for(int i = 300 ; i < 350; i++){
-        //    for(int j = 300; j < 350; j++){
                 if(baseTerrain.getTerrain()[i][j].getType() == 0){
                     if(optimalRadiation > radiationCaughtTo[i][j] + radiationCaughtFrom[i][j]
                             - baseTerrain.getTerrain()[i][j].getRadiation() &&

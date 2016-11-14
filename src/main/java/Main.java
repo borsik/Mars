@@ -5,12 +5,12 @@ import java.awt.image.BufferedImage;
  */
 public class Main {
     public static void main(String [] args) {
-        String path = "map.png";
+        String path = "map2.png";
         BufferedImage map = ImageConvert.loadImage(path);
         Terrain cityMap = ImageConvert.convertTo2D(map);
         cityMap.calculateRadiation();
         OptimalPath escape = new OptimalPath(cityMap);
-        escape.calculateOptimalPath(1200.0);
+        escape.calculateOptimalPath(200.0);
         System.out.println(escape.showOptimalPath());
 
         Plot plot = new Plot(cityMap);

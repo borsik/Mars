@@ -8,6 +8,15 @@ public class Terrain {
     private Point start, finish;
     private LinkedList<Point> sourcesOfRadiation;
     private LinkedList<Point> path;
+    private double min;
+    private double max;
+
+    public double getMin(){
+        return min;
+    }
+    public double getMax(){
+        return max;
+    }
 
     public int getWidth(){
         return width;
@@ -60,7 +69,8 @@ public class Terrain {
     }
 
     public void calculateRadiation(){
-        double min=Double.POSITIVE_INFINITY, max=0.0;
+        min=Double.POSITIVE_INFINITY;
+        max=0.0;
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){
                 for (Point p: sourcesOfRadiation ) {
@@ -75,6 +85,6 @@ public class Terrain {
                 }
             }
         }
-        System.out.println("Radiation calculated" + min + " " + max);
+        System.out.println("Radiation calculated " + min + " - " + max);
     }
 }

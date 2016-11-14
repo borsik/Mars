@@ -55,6 +55,7 @@ public class ImageConvert {
 
                         break;
                     default:
+                        System.out.println("Wrong color at " + i + " " + j);
                 }
             }
         }
