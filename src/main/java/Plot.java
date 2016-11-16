@@ -16,7 +16,7 @@ public class Plot extends JPanel{
         JFrame frame = new JFrame("Radiation map");
         frame.add(this);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 800);
+        frame.setSize(1000, 1000);
         frame.setVisible(true);
 
         try {
