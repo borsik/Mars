@@ -25,7 +25,7 @@ public class Plot extends JPanel{
             frame.paint(graphics2D);
             ImageIO.write(image, "png", new File("radiation.png"));
         } catch (Exception exception) {
-            //code
+            exception.printStackTrace();
         }
     }
 
@@ -36,8 +36,10 @@ public class Plot extends JPanel{
         for (int i = 0; i < places.length; i++) {
             for (int j = 0; j < places[i].length; j++) {
                 double r = places[i][j].getRadiation();
-                float rad = (float) r;
-                g.setColor(Color.getHSBColor(rad / 3500000, 1, 1));
+                double maxRad = terrain.getMax();
+                double curRad = r / maxRad;
+                float rad = (float) curRad;
+                g.setColor(Color.getHSBColor(rad, 1, 1));
                 if (places[i][j].isPath()) {
                     g.setColor(Color.CYAN);
                     g.drawLine(i, j, i + 1, j);
